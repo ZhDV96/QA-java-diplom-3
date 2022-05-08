@@ -5,10 +5,11 @@ import org.junit.After;
 import com.codeborne.selenide.Configuration;
 import static org.hamcrest.CoreMatchers.containsString;
 import org.hamcrest.MatcherAssert;
+import ru.yandex.praktikum.OrderPage;
 
 import static com.codeborne.selenide.Selenide.*;
 
-public class TestOrderYandexBrowser {
+public class TestOrderEdgeBrowser {
     // открывается страница и создаётся экземпляр класса страницы
     OrderPage orderPage = page(OrderPage.class);
 
@@ -16,8 +17,7 @@ public class TestOrderYandexBrowser {
     public void setBrowser() {
         //открытие главной страницы сервиса в браузере и переход к форме заказа
         Configuration.browser = "edge";
-        open("https://qa-scooter.praktikum-services.ru/");
-        orderPage.clickCookieButton();
+        open("https://stellarburgers.nomoreparties.site/");
     }
 
     //тест на возможность оформления заказа в сервисе через браузер Chrome с первым набором данных
