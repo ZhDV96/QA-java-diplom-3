@@ -15,26 +15,17 @@ public class MainPage {
     //локатор кнопки авторизации в футере
     @FindBy(how = How.XPATH, using = ".//button[contains(@class,'button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_large__G21Vg') and contains(text(),'Войти в аккаунт')]")
     private SelenideElement orderButtonBottom;
-    //локатор поля соглашения cookie
-    @FindBy(how = How.XPATH,using = ".//div[text() = 'Зарегистрироваться']")
-    private SelenideElement singUp;
 
 
-    //метод клика по кнопке заказа в шапке сайта
-    public void clickOrderButtonTop() {
-        orderButtonTop.click();
+
+    //метод клика по кнопке авторизации в шапке сайта
+    public void clickAuthorizationTopButton() {
+        orderTopBottom.click();
     }
 
-    //метод клика по кнопке заказа в футере сайта
-    public void clickOrderButtonBottom() {
+    //метод клика по кнопке авторизации в футере сайта
+    public void clickAuthorizationBottomButton() {
         orderButtonBottom.scrollIntoView(true).shouldBe(Condition.appear, Duration.ofSeconds(8000)).click();
     }
 
-    //метод поля соглашения cookie
-    public void clickCookieButton() {
-        if (cookieButton.exists()) {
-            cookieButton.click();
-        }
-    }
-//блок вопросов и ответов
 }
