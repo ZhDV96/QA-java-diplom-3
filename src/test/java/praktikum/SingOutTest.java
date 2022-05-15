@@ -5,15 +5,16 @@ import org.junit.After;
 import com.codeborne.selenide.Configuration;
 import static org.hamcrest.CoreMatchers.containsString;
 import org.hamcrest.MatcherAssert;
-import praktikum.LoginPage;
-import praktikum.ProfilePage;
-import praktikum.MainPage;
-
 import static com.codeborne.selenide.Selenide.*;
 
-public class TestOrderEdgeBrowser {
+public class SingOutTest {
     // открывается страница и создаётся экземпляр класса страницы
+    MainPage mainPage = page(MainPage.class);
+    ProfilePage profilePage = page(ProfilePage.class);
+    LoginPage loginPage = page(LoginPage.class);
     RegisterPage registerPage = page(RegisterPage.class);
+    CustomerDataGenerator customerGenerator = new CustomerDataGenerator();
+    Customer firstCustomer = customerGenerator.getRandom();
 
     @Before
     public void setBrowser() {
@@ -24,22 +25,31 @@ public class TestOrderEdgeBrowser {
 
     //тест на возможность оформления заказа в сервисе через браузер Chrome с первым набором данных
     @Test
-    public void testOrderData1 () {
+    public void registerCustomerWithValidData() {
         //теста, проверяющий возможность регистрации
-        MainPage mainPage = page(MainPage.class);
-        ProfilePage profilePage = page(ProfilePage.class);
         mainPage.clickAuthorizationTopButton();
-        registerPage.registerAndAuthorization("ZhD60191", "m2ilerlx29@gmail.com", "Adulil6336");
+        String name = firstCustomer.getName();
+        String email =firstCustomer.getEmail();
+        String password = firstCustomer.getPassword();
+        loginPage.clickSingUpButtonOnLoginPage();
+        registerPage.registerAndAuthorization(name, email, password);
+        loginPage.signInLoginPage(email, password);
         mainPage.clickAuthorizationTopButton();
         String actualText = profilePage.waitingForDescriptionText();
         String expectedText = "В этом разделе вы можете изменить свои персональные данные";
+        String actualName = profilePage.waitingForTextOne();
+        String expectedName = firstCustomer.getName();
         MatcherAssert.assertThat(actualText, containsString(expectedText));
+        MatcherAssert.assertThat(actualName, containsString(expectedName));
+        profilePage.signingOutFromAccount();
+        loginPage.checkSingInButtonOnLoginPage();
     }
-
 
     @After
     public void teardown() {
         // Закрыть браузер
         closeWindow();
     }
+
+
 }

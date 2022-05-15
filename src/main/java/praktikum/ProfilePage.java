@@ -8,6 +8,12 @@ import java.time.Duration;
 
 public class ProfilePage {
 
+    //локатор кнопки перехода в конструктор через лого со страницы профиля
+    @FindBy(how = How.XPATH,using = ".//header/nav/div/a")
+    private SelenideElement profileConstructorLogoLink;
+    //локатор кнопки перехода в конструктор со страницы профиля
+    @FindBy(how = How.XPATH,using = ".//div/header/nav/ul/li[1]/a")
+    private SelenideElement profileConstructorLink;
     //локатор 1 пункта списка ссылок меню профиля
     @FindBy(how = How.XPATH,using = ".//a[text()='Профиль']")
     private SelenideElement profileEditingLink;
@@ -23,6 +29,21 @@ public class ProfilePage {
     //лоактор поля ввода и реадктирования имени пользователя
     @FindBy(how = How.XPATH,using = ".//li[3]//input")
     private SelenideElement profilePasswordEditingField;
+    //лоактор поля ввода и реадктирования имени пользователя
+    @FindBy(how = How.XPATH,using = ".//button[text() = 'Выход']")
+    private SelenideElement profileSignOutLink;
+
+    public void clickProfileConstructorLogoLink() {
+        profileConstructorLogoLink.shouldBe(Condition.appear, Duration.ofSeconds(8000)).click();
+    }
+
+    public void clickProfileConstructorLink() {
+        profileConstructorLink.shouldBe(Condition.appear, Duration.ofSeconds(8000)).click();
+    }
+
+    public void signingOutFromAccount() {
+        profileSignOutLink.shouldBe(Condition.appear, Duration.ofSeconds(8000)).click();
+    }
 
     public String waitingForDescriptionText() {
         profileDescriptionPanel.shouldBe(Condition.appear, Duration.ofSeconds(8000)).click();
