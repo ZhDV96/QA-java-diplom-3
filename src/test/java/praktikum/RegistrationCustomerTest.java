@@ -1,4 +1,6 @@
 package praktikum;
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.Test;
 import org.junit.Before;
@@ -27,6 +29,8 @@ public class RegistrationCustomerTest {
     }
 
     //тест на возможность оформления заказа в сервисе через браузер Chrome с первым набором данных
+    @DisplayName("Авторизация пользователя с валидными данными")
+    @Description("Тест, проверяющий возмжность регистрации пользователя с валидными данными")
     @Test
     public void registerCustomerWithValidData() {
         //теста, проверяющий возможность регистрации
@@ -46,6 +50,8 @@ public class RegistrationCustomerTest {
         MatcherAssert.assertThat(actualName, containsString(expectedName));
     }
 
+    @DisplayName("Авторизация пользователя с невалидными данными")
+    @Description("Тест, проверяющий возмжность авторизации пользователя с невалидными данными - пароль короче 6 символов")
     @Test
     public void registerCustomerWithInvalidData() {
         //теста, проверяющий возможность регистрации

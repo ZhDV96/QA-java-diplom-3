@@ -3,8 +3,8 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-
 import java.time.Duration;
+import io.qameta.allure.Step;
 
 public class ProfilePage {
 
@@ -33,23 +33,28 @@ public class ProfilePage {
     @FindBy(how = How.XPATH,using = ".//button[text() = 'Выход']")
     private SelenideElement profileSignOutLink;
 
+    @Step("Клик по лого сайта в хэдере на странице аккаунта")
     public void clickProfileConstructorLogoLink() {
         profileConstructorLogoLink.shouldBe(Condition.appear, Duration.ofSeconds(8000)).click();
     }
 
+    @Step("Клик по ссылке 'Конструктор' в хэдере на странице аккаунта")
     public void clickProfileConstructorLink() {
         profileConstructorLink.shouldBe(Condition.appear, Duration.ofSeconds(8000)).click();
     }
 
+    @Step("Метод выхода их аккаунта")
     public void signingOutFromAccount() {
         profileSignOutLink.shouldBe(Condition.appear, Duration.ofSeconds(8000)).click();
     }
 
+    @Step("Проверка наличия текста описания на странице профиля")
     public String waitingForDescriptionText() {
         profileDescriptionPanel.shouldBe(Condition.appear, Duration.ofSeconds(8000)).click();
         return profileDescriptionPanel.getText();
     }
 
+    @Step("Проверка наличия текста имени пользователя на странице профиля")
     public String waitingForTextOne() {
         profileNameEditingField.shouldBe(Condition.appear, Duration.ofSeconds(8000)).click();
         return profileNameEditingField.getValue().toString();

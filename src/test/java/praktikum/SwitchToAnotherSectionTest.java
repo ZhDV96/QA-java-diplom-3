@@ -6,6 +6,8 @@ import org.junit.Before;
 import org.junit.Test;
 import static com.codeborne.selenide.Selenide.*;
 import static org.hamcrest.CoreMatchers.containsString;
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 
 public class SwitchToAnotherSectionTest {
 
@@ -26,9 +28,11 @@ public class SwitchToAnotherSectionTest {
     }
 
     //тест на возможность оформления заказа в сервисе через браузер Chrome с первым набором данных
+    @DisplayName("Переход на основную страницу через ссылку 'Конструктор'")
+    @Description("Тест, проверяющий возможность перехода на основную страницу через ссылку 'Конструктор'")
     @Test
-    public void authorizationOnLoginPage() {
-        //теста, проверяющий возможность регистрации
+    public void moveToMainPageThroughConstructorLink() {
+        //тест, проверяющий возможность регистрации
         mainPage.clickAuthorizationBottomButton();
         loginPage.signInLoginPage(email, password);
         mainPage.clickAuthorizationTopButton();
@@ -44,8 +48,10 @@ public class SwitchToAnotherSectionTest {
     }
 
     //тест на возможность оформления заказа в сервисе через браузер Chrome с первым набором данных
+    @DisplayName("Переход на основную страницу через лого сайта")
+    @Description("Тест, проверяющий возможность перехода на основную страницу через лого сайта")
     @Test
-    public void authorizationThroughAuthorizationButton() {
+    public void moveToMainPageThroughConstructorLogoLink() {
         //теста, проверяющий возможность регистрации
         mainPage.clickAuthorizationTopButton();
         loginPage.signInLoginPage(email, password);

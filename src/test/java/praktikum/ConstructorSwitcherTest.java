@@ -6,12 +6,9 @@ import org.junit.After;
 import com.codeborne.selenide.Configuration;
 import static com.codeborne.selenide.Condition.exactText;
 import static com.codeborne.selenide.Condition.visible;
-import static org.hamcrest.CoreMatchers.containsString;
-import org.hamcrest.MatcherAssert;
-import praktikum.LoginPage;
-import praktikum.ProfilePage;
-import praktikum.MainPage;
 import static com.codeborne.selenide.Selenide.*;
+import io.qameta.allure.junit4.DisplayName;
+import io.qameta.allure.Description;
 
 public class ConstructorSwitcherTest {
 
@@ -41,6 +38,8 @@ public class ConstructorSwitcherTest {
         open("https://stellarburgers.nomoreparties.site/");
     }
 
+    @DisplayName("Проверка возможности переключения вкладок конструктора ингредиентов заказа")
+    @Description("Тест, проверяющий возмжность возможность переключения вкладок конструктора и корректности названий ингредиентов")
     @Test
     public void comparingIngredientsListNamesTest () {
 

@@ -6,6 +6,8 @@ import com.codeborne.selenide.Configuration;
 import static org.hamcrest.CoreMatchers.containsString;
 import org.hamcrest.MatcherAssert;
 import static com.codeborne.selenide.Selenide.*;
+import io.qameta.allure.Description;
+import io.qameta.allure.junit4.DisplayName;
 
 public class SingOutTest {
     // открывается страница и создаётся экземпляр класса страницы
@@ -24,8 +26,10 @@ public class SingOutTest {
     }
 
     //тест на возможность оформления заказа в сервисе через браузер Chrome с первым набором данных
+    @DisplayName("Авторизация пользователя с валидными данными")
+    @Description("Тест, проверяющий возмжность регистрации пользователя с валидными данными")
     @Test
-    public void registerCustomerWithValidData() {
+    public void signOutFromCustomerAccount() {
         //теста, проверяющий возможность регистрации
         mainPage.clickAuthorizationTopButton();
         String name = firstCustomer.getName();

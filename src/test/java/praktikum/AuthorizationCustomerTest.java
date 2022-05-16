@@ -1,12 +1,13 @@
 package praktikum;
 import com.codeborne.selenide.Configuration;
-import org.apache.commons.lang3.RandomStringUtils;
 import org.hamcrest.MatcherAssert;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import static com.codeborne.selenide.Selenide.*;
 import static org.hamcrest.CoreMatchers.containsString;
+import io.qameta.allure.junit4.DisplayName;
+import io.qameta.allure.Description;
 
 public class AuthorizationCustomerTest {
 
@@ -27,6 +28,8 @@ public class AuthorizationCustomerTest {
     }
 
     //тест на возможность оформления заказа в сервисе через браузер Chrome с первым набором данных
+    @DisplayName("Авторизация пользователя через кнопку, ведущую на страницу авторизации")
+    @Description("Тест, проверяющий возмжность авторизации пользователя с валидными данными")
     @Test
     public void authorizationOnLoginPage() {
         //теста, проверяющий возможность регистрации
@@ -42,6 +45,8 @@ public class AuthorizationCustomerTest {
     }
 
     //тест на возможность оформления заказа в сервисе через браузер Chrome с первым набором данных
+    @DisplayName("Авторизация пользователя через кнопку 'Войти'")
+    @Description("Тест, проверяющий возмжность авторизации пользователя с валидными данными")
     @Test
     public void authorizationThroughAuthorizationButton() {
         //теста, проверяющий возможность регистрации
@@ -55,6 +60,9 @@ public class AuthorizationCustomerTest {
         MatcherAssert.assertThat(actualText, containsString(expectedText));
         MatcherAssert.assertThat(actualName, containsString(expectedName));
     }
+
+    @DisplayName("Авторизация пользователя через кнопку на странице регистрации пользователя")
+    @Description("Тест, проверяющий возмжность авторизации пользователя с валидными данными")
     @Test
     public void authorizationThroughRegistrationPage() {
         //теста, проверяющий возможность регистрации
@@ -70,6 +78,9 @@ public class AuthorizationCustomerTest {
         MatcherAssert.assertThat(actualText, containsString(expectedText));
         MatcherAssert.assertThat(actualName, containsString(expectedName));
     }
+
+    @DisplayName("Авторизация пользователя через ссылку на странице восстановления пароля")
+    @Description("Тест, проверяющий возмжность авторизации пользователя с валидными данными")
     @Test
     public void authorizationThroughForgotPasswordPage() {
         //теста, проверяющий возможность регистрации
@@ -85,7 +96,6 @@ public class AuthorizationCustomerTest {
         MatcherAssert.assertThat(actualText, containsString(expectedText));
         MatcherAssert.assertThat(actualName, containsString(expectedName));
     }
-
 
     @After
     public void teardown() {

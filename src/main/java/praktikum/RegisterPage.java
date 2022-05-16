@@ -3,8 +3,8 @@ import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.How;
-
 import java.time.Duration;
+import io.qameta.allure.Step;
 
 public class RegisterPage extends LoginPage {
 
@@ -30,26 +30,32 @@ public class RegisterPage extends LoginPage {
 
 
     //метод заполнения поля ввода имя
+    @Step("Метод заполнения поля имя пользователя")
     public void setNameField(String name) {
         registerNameField.setValue(name);
     }
     //метод заполнения поля ввода email
+    @Step("Метод заполнения поля email пользователя")
     public void setSurnameField(String email) {
         registerEmailField.setValue(email);
     }
     //метод заполнения поля ввода пароля
+    @Step("Метод заполнения поля пароль пользователя")
     public void setAddressField(String password) {
         registerPasswordField.setValue(password);
     }
     //метод клика по кнопке регистрации с указанными данными
+    @Step("Клик по кнопке подтверждения регистрации")
     public void clickConfirmationButton() {
         confirmRegistrationButton.click();
     }
     //метод клика по кнопке регистрации с указанными данными
+    @Step("Клик по кнопке регистрации на странице регистрации")
     public void clickSignUpRegisterPage() {
         signUpRegisterPage.click();
     }
     //метод клика по кнопке регистрации с указанными данными
+    @Step("Ожидание появления сообщения о некорректности пароля")
     public String checkNotificationIncorrectValue() {
         incorrectPasswordNotification.shouldBe(Condition.appear, Duration.ofSeconds(8000));
         return incorrectPasswordNotification.getText();
@@ -57,6 +63,7 @@ public class RegisterPage extends LoginPage {
 
     //группа методов для заказа с помощью кнопки "войти" в хэдере
     //метод оформения заказа: объединяет ввод данных и клик по кнопке далее для первого набора даннных
+    @Step("Метод регистрации")
     public void registerAndAuthorization(String name, String email, String password) {
         setNameField(name);
         setSurnameField(email);
@@ -64,6 +71,7 @@ public class RegisterPage extends LoginPage {
         clickConfirmationButton();
     }
     //метод оформения заказа: объединяет ввод данных и клик по кнопке "Зарегистрировать" для первого набора даннных
+    @Step("Метод регистрации пользователя с некорректными данными")
     public void registerWithIncorrectValue(String name, String email, String password) {
         setNameField(name);
         setSurnameField(email);
